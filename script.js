@@ -15,6 +15,9 @@ $(document).ready(function() {
 		}
 		submitted = !submitted
 	});
+	$('span').click(function() {
+		$('input:eq(' + $('span').index(this) + ')').prop("checked", true);
+	});
 });
 
 function getQustion() {
