@@ -21,7 +21,7 @@ $(document).ready(function() {
 });
 
 function getQustion() {
-	quizNum = Math.floor(Math.random() * 4) + 1;
+	quizNum = Math.floor(Math.random() * 15) + 1;
 	var quiz = $.ajax({
 		url: "res/questions/quiz" + quizNum + ".txt",
 		async: false
