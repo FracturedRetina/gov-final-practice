@@ -1,6 +1,8 @@
 var quizNum;
 var questionNum;
 var submitted = false;
+var correct = 0;
+var total = 0;
 
 $(document).ready(function() {
 	refresh();
@@ -58,12 +60,20 @@ function checkAnswer() {
 		url: "res/answers/quiz" + quizNum + ".txt",
 		async: false
 	}).responseText;
+	var answer;
 	
 	$('span').each(function(i) {
 		if ($('input:eq(' + i + ')').prop('checked')) {
 			$(this).css("color", "red");
+			answer = $(this).attr("id");
 		}
 	});
 	
+	if (answer == answers[questionNum]) {
+		correct++;
+	}
+	total++;
+	
 	$('#' + answers[questionNum]).css("color", "green");
+	$('#score').text(correct + "/" + total);
 }
