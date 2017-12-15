@@ -28,8 +28,8 @@ function getQustion() {
 		url: "res/questions/quiz" + quizNum + ".txt",
 		async: false
 	}).responseText;
-	var questions = quiz.match(/([0-9]{1,2}\.) .+/g);
-	var answers = /([a-e]{1,2}\.) .+/g;
+	var questions = quiz.match(/[0-9]{1,2}\. .+/g);
+	var answers = /\t[a-e]\. .+/g;
 	
 	questionNum = Math.floor(Math.random() * questions.length);
 	
@@ -45,11 +45,11 @@ function refresh() {
 	var q = getQustion();
 	$('#quiz').text("Quiz " + quizNum);
 	$('#question').text(q[0]);
-	$('#a').text(q[1][0]);
-	$('#b').text(q[1][1]);
-	$('#c').text(q[1][2]);
-	$('#d').text(q[1][3]);
-	$('#e').text(q[1][4]);
+	$('#a').text(q[1][0].substring(1));
+	$('#b').text(q[1][1].substring(1));
+	$('#c').text(q[1][2].substring(1));
+	$('#d').text(q[1][3].substring(1));
+	$('#e').text(q[1][4].substring(1));
 	$('span').css("color", "black");
 	
 	$('input').prop("checked", false);
